@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  web:
+    container_name: mibstreamer-web
+    image: nginx:alpine
+    volumes:
+      - ../src:/src
+      - ../site.conf:/etc/nginx/conf.d/default.conf:ro
+    links:
+      - php
+    ports:
+      - 80:80
+
+  php:
+    container_name: mibstreamer-php
+    build:
+      context: ./php
+    volumes:
+      - ../src:/src
+    links:
+      - mariadb:database
+
+  mariadb:
+    container_name: mibstreamer-mdb
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: faceart
+    volumes:
+      - database-data:/var/lib/mysql
+      - ../sql:/sql
+      
+  composer:
+    container_name: mibstreamer-cmp
+    restart: 'no'
+    image: composer
+    command: install
+    volumes:
+      - ..:/app
+
+volumes:
+  database-data:

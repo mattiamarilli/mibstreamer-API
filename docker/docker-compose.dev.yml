@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  adminer:
+    container_name: faceart-adm
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+      

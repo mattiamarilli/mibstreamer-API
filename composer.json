@@ -1,0 +1,21 @@
+{
+    "name": "mattiamarilli/mibstreamer-api",
+    "type": "project",
+    "license": "private",
+    "authors": [
+        {
+            "name": "mattiamarilli",
+            "email": "mattia.marilli@stud.unifi.it"
+        },
+        {
+            "name": "giacomoponzuoli",
+            "email": "giacomo.ponzuoli@stud.unifi.it"
+        }
+    ],
+    "require": {
+        "klein/klein": "^2.1"
+    },
+    "config": {
+        "vendor-dir": "src/vendor"
+    }
+}
